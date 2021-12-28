@@ -1,21 +1,6 @@
 <h2>Donkeys</h2>
 <ul>
   <li *ngFor="let donkey of donkeys">
-    <div class="card mb-3">
-      <div class="row">
-        <div class="col-4">
-          <img [src]="donkey.image" class="card-img" [alt]="donkey.name" />
-        </div>
-        <div class="col-8">
-          <div class="card-body">
-            <h5 class="card-title">{{ donkey.name }}</h5>
-            <p class="card-text">Origine: {{ donkey.origin }}</p>
-            <p class="card-text">
-              <small class="text-muted">{{ donkey.birthday | date }}</small>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <app-donkey [donkey]="donkey"></app-donkey>
   </li>
 </ul>

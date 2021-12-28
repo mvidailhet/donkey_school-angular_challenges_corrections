@@ -8,13 +8,15 @@ import { CreateDonkeyComponent } from './pages/create-donkey/create-donkey.compo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
 import { DonkeysListComponent } from './components/donkeys-list/donkeys-list.component';
+import { DonkeyComponent } from './components/donkey/donkey.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateDonkeyComponent,
     HomeComponent,
-    DonkeysListComponent
+    DonkeysListComponent,
+    DonkeyComponent
   ],
   imports: [
     BrowserModule,
