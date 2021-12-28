@@ -1,0 +1,16 @@
+<ul>
+  <li *ngFor="let donkey of donkeys">
+    <div class="card">
+      <img [src]="donkey.image" class="card-img-top" [alt]="donkey.name">
+      <div class="card-body">
+        <h5 class="card-title">{{ donkey.name }}</h5>
+        <p class="card-text">
+          Date de naissance: {{ donkey.birthday | date }}
+        </p>
+        <p class="card-text">
+          Origine: {{ donkey.birthday | date }}
+        </p>
+      </div>
+    </div>
+  </li>
+</ul>

@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateDonkeyComponent } from './pages/create-donkey/create-donkey.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './pages/home/home.component';
+import { DonkeysListComponent } from './components/donkeys-list/donkeys-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateDonkeyComponent
+    CreateDonkeyComponent,
+    HomeComponent,
+    DonkeysListComponent
   ],
   imports: [
     BrowserModule,
