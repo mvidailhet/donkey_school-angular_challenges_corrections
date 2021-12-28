@@ -5,11 +5,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { UserComponent } from './pages/user/user.component';
+import { SignupComponent } from './pages/signup/signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    MenuComponent,
+    UserComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,10 @@
+$menu-height: 40px;
+
+.menu {
+  height: $menu-height;
+}
+
+.main-content {
+  margin-top: $menu-height;
+  padding-top: 16px;
+}
