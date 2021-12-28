@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CreateDonkeyComponent } from './pages/create-donkey/create-donkey.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'create',
+    component: CreateDonkeyComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

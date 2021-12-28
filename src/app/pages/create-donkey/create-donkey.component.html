@@ -1,0 +1,110 @@
+<div class="container">
+  <div class="p-5">
+
+    <h1>Créer un donkey</h1>
+
+    <form [formGroup]="donkeyForm" (ngSubmit)="onSubmit()">
+      <div formGroupName="donkeyData">
+        <div class="form-group">
+          <label for="nameInput">Nom</label>
+          <input
+            class="form-control"
+            name="name"
+            id="nameInput"
+            type="text"
+            formControlName="name"
+          />
+          <ng-container *ngIf="name.touched">
+            <div
+              class="text-danger text-small"
+              *ngIf="name.errors?.['required']"
+            >
+              Un âne doit avoir un nom
+            </div>
+          </ng-container>
+        </div>
+        <div class="form-group">
+          <label for="originInput">Origine</label>
+          <select
+            class="form-control form-select"
+            name="origin"
+            id="originInput"
+            formControlName="origin"
+          >
+            <option *ngFor="let origin of origins" [value]="origin.value">
+              {{ origin.name }}
+            </option>
+          </select>
+          <ng-container *ngIf="origin.touched">
+            <div
+              class="text-danger text-small"
+              *ngIf="origin.errors?.['required']"
+            >
+              Un âne doit avoir une origine
+            </div>
+          </ng-container>
+        </div>
+        <div class="form-group">
+          <label for="imageInput">Image</label>
+          <div class="row">
+            <div class="col-8">
+              <select
+                class="form-control form-select"
+                name="image"
+                id="imageInput"
+                formControlName="image"
+              >
+                <option *ngFor="let image of images" [value]="image.value">
+                  {{ image.name }}
+                </option>
+              </select>
+            </div>
+            <div class="col">
+              <img
+              class="donkey-image"
+              *ngIf="image.value"
+              [src]="image.value"
+              alt="donkey image"
+            />
+            </div>
+          </div>
+          <ng-container *ngIf="image.touched">
+            <div
+              class="text-danger text-small"
+              *ngIf="image.errors?.['required']"
+            >
+              Un âne doit avoir une image
+            </div>
+          </ng-container>
+        </div>
+        <div class="form-group">
+          <label for="birthdayInput">Date de naissance</label>
+          <input
+            type="date"
+            min="1950-01-01"
+            max="2020-12-31"
+            class="form-control"
+            name="birthday"
+            id="birthdayInput"
+            formControlName="birthday"
+          />
+          <ng-container *ngIf="birthday.touched">
+            <div
+              class="text-danger text-small"
+              *ngIf="birthday.errors?.['required']"
+            >
+              Un âne doit avoir une date de naissance
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <button
+        [disabled]="!donkeyForm.valid"
+        class="btn btn-primary mt-3"
+        type="submit"
+      >
+        Créer
+      </button>
+    </form>
+  </div>
+</div>
