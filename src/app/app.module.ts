@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
 import { DonkeysListComponent } from './components/donkeys-list/donkeys-list.component';
 import { DonkeyComponent } from './components/donkey/donkey.component';
+import { UserDonkeysListComponent } from './components/user-donkeys-list/user-donkeys-list.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DonkeyComponent } from './components/donkey/donkey.component';
     CreateDonkeyComponent,
     HomeComponent,
     DonkeysListComponent,
-    DonkeyComponent
+    DonkeyComponent,
+    UserDonkeysListComponent
   ],
   imports: [
     BrowserModule,

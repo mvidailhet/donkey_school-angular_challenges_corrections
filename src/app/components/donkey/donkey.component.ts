@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Donkey } from 'src/app/services/donkey.service';
 
 @Component({
@@ -8,4 +8,9 @@ import { Donkey } from 'src/app/services/donkey.service';
 })
 export class DonkeyComponent {
   @Input() donkey: Donkey | undefined;
+  @Output() adoptClick = new EventEmitter();
+
+  adopt(): void {
+    this.adoptClick.emit();
+  }
 }

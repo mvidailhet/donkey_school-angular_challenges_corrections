@@ -12,4 +12,8 @@ export class DonkeysListComponent {
   constructor(private donkeyService: DonkeyService) {
     this.donkeys = this.donkeyService.donkeys;
   }
+
+  adopt(index: number): void {
+    this.donkeyService.adoptDonkey(this.donkeys[index]);
+  }
 }

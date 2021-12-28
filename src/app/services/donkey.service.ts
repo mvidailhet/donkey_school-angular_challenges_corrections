@@ -12,7 +12,9 @@ export interface Donkey {
 })
 export class DonkeyService {
   static STORAGE_DONKEYS_KEY = 'donkeys';
+  static STORAGE_USER_DONKEYS_KEY = 'user_donkeys';
   private _donkeys: Donkey[] = [];
+  private _userDonkeys: Donkey[] = [];
 
   constructor() {
     this.getDonkeysFromStorage();
@@ -31,6 +33,10 @@ export class DonkeyService {
     return this._donkeys;
   }
 
+  get userDonkeys() {
+    return this._userDonkeys;
+  }
+
   private storeDonkeys() {
     localStorage.setItem(
       DonkeyService.STORAGE_DONKEYS_KEY,
@@ -41,5 +47,9 @@ export class DonkeyService {
   createDonkey(donkey: Donkey) {
     this._donkeys.push(donkey);
     this.storeDonkeys();
+  }
+
+  adoptDonkey(donkey: Donkey) {
+    this._userDonkeys.push(donkey);
   }
 }
