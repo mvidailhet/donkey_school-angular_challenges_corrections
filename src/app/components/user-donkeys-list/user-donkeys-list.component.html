@@ -1,6 +1,6 @@
 <h2>Mes Donkeys</h2>
-<ul>
-  <li *ngFor="let donkey of donkeys">
+<ul class="row">
+  <li class="col donkey" *ngFor="let donkey of donkeys">
     <img class="donkey-image" [src]="donkey.image" [alt]="donkey?.name" />
   </li>
 </ul>
