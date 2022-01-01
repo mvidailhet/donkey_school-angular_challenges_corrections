@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="p-5">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div ngModelGroup="userData">
+        <div class="form-group">
+          <label for="firstnameInput">Firstname</label>
+          <input
+            class="form-control"
+            id="firstnameInput"
+            type="text"
+            name="firstname"
+            ngModel
+            required
+            #firstname="ngModel"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="firstname.touched && firstname.errors?.['required']"
+          >
+            Please provide a firstname
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastnameInput">Lastname</label>
+          <input
+            class="form-control"
+            id="lastnameInput"
+            type="text"
+            name="lastname"
+            ngModel
+            required
+            #lastname="ngModel"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="lastname.touched && lastname.errors?.['required']"
+          >
+            Please provide a lastname
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="emailInput">Email</label>
+          <input
+            class="form-control"
+            type="email"
+            id="emailInput"
+            name="email"
+            ngModel
+            required
+            email
+            #email="ngModel"
+          />
+          <ng-container *ngIf="email.touched">
+            <div
+              class="form-text text-danger"
+              *ngIf="email.errors?.['required']"
+            >
+              Please provide an email
+            </div>
+            <div class="form-text text-danger" *ngIf="email.errors?.['email']">
+              Please provide a valid email
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <button [disabled]="!f.valid" class="btn btn-primary" type="submit">
+        submit
+      </button>
+    </form>
+  </div>
+</div>
