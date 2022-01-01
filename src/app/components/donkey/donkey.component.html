@@ -1,13 +1,14 @@
-<div class="card">
-  <img [src]="donkey?.image" class="card-img" [alt]="donkey?.name" />
-  <div class="card-body">
-    <h5 class="card-title">{{ donkey?.name }}</h5>
+<div class="donkey" [ngClass]="{ small: small }">
+  <img [src]="donkey?.image" class="donkey-img" [alt]="donkey?.name" />
+  <div class="donkey-body">
+    <h5 class="donkey-title">{{ donkey?.name }}</h5>
     <p>{{ donkey?.origin }}</p>
     <p>
       <small>{{ donkey?.birthday | date }}</small>
     </p>
-    <button (click)="adopt()" class="btn btn-primary btn-sm">Adopter</button>
+    <button *ngIf="canAdopt" (click)="adopt()" class="btn btn-primary btn-sm">
+      Adopter
+    </button>
   </div>
   <div class="overlay"></div>
 </div>
-

@@ -8,6 +8,8 @@ import { Donkey } from 'src/app/services/donkey.service';
 })
 export class DonkeyComponent {
   @Input() donkey: Donkey | undefined;
+  @Input() canAdopt = false;
+  @Input() small = false;
   @Output() adoptClick = new EventEmitter();
 
   adopt(): void {
