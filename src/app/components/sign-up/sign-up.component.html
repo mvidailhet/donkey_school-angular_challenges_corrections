@@ -20,10 +20,10 @@
               class="form-text text-danger"
               *ngIf="firstname.errors?.['required']"
             >
-              Please provide a firstname
+              Le prénom est requis
             </div>
             <div class="form-text text-danger" *ngIf="firstname.errors?.['minlength']">
-              The firstname should be longer than 2 characters
+              Le prénom doit comporter au moins 3 caractères
             </div>
           </ng-container>
         </div>
@@ -45,10 +45,10 @@
               class="form-text text-danger"
               *ngIf="lastname.errors?.['required']"
             >
-              Please provide a lastname
+              Le nom est requis
             </div>
             <div class="form-text text-danger" *ngIf="lastname.errors?.['minlength']">
-              The lastname should be longer than 2 characters
+              Le nom doit comporter au moins 3 caractères
             </div>
           </ng-container>
         </div>
@@ -69,16 +69,16 @@
               class="form-text text-danger"
               *ngIf="email.errors?.['required']"
             >
-              Please provide an email
+              L'email est requis
             </div>
             <div class="form-text text-danger" *ngIf="email.errors?.['email']">
-              Please provide a valid email
+              L'email est invalide
             </div>
           </ng-container>
         </div>
       </div>
       <button [disabled]="!f.valid" class="btn btn-primary" type="submit">
-        submit
+        Envoyer
       </button>
     </form>
   </div>
