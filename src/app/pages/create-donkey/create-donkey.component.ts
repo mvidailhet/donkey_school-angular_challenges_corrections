@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { Router } from '@angular/router';
 import { donkeyImages, donkeyOrigins } from 'src/app/data';
 import { DonkeyService } from 'src/app/services/donkey.service';
 
@@ -13,7 +19,11 @@ export class CreateDonkeyComponent {
   origins = donkeyOrigins;
   images = donkeyImages;
 
-  constructor(private formBuilder: FormBuilder, private donkeyService: DonkeyService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private donkeyService: DonkeyService,
+    private router: Router
+  ) {
     this.createForm();
   }
 
@@ -30,21 +40,22 @@ export class CreateDonkeyComponent {
 
   onSubmit(): void {
     this.donkeyService.createDonkey(this.donkeyForm.value.donkeyData);
+    this.router.navigate(['/home'], { replaceUrl: true });
   }
 
   get name(): FormControl {
-    return this.donkeyForm.get("donkeyData.name") as FormControl;
+    return this.donkeyForm.get('donkeyData.name') as FormControl;
   }
 
   get origin(): FormControl {
-    return this.donkeyForm.get("donkeyData.origin") as FormControl;
+    return this.donkeyForm.get('donkeyData.origin') as FormControl;
   }
 
   get birthday(): FormControl {
-    return this.donkeyForm.get("donkeyData.birthday") as FormControl;
+    return this.donkeyForm.get('donkeyData.birthday') as FormControl;
   }
 
   get image(): FormControl {
-    return this.donkeyForm.get("donkeyData.image") as FormControl;
+    return this.donkeyForm.get('donkeyData.image') as FormControl;
   }
 }
