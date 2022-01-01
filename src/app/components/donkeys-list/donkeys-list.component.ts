@@ -14,6 +14,6 @@ export class DonkeysListComponent {
   }
 
   adopt(index: number): void {
-    this.donkeyService.adoptDonkey(this.donkeys[index]);
+    this.donkeyService.adoptDonkey(index);
   }
 }

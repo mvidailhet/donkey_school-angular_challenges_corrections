@@ -49,7 +49,8 @@ export class DonkeyService {
     this.storeDonkeys();
   }
 
-  adoptDonkey(donkey: Donkey) {
-    this._userDonkeys.push(donkey);
+  adoptDonkey(index: number) {
+    this._userDonkeys.push(this._donkeys[index]);
+    this._donkeys.splice(index, 1);
   }
 }
