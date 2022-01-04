@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="p-5">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div ngModelGroup="userData">
+        <div class="form-group">
+          <label for="firstnameInput">Firstname</label>
+          <input
+            class="form-control"
+            id="firstnameInput"
+            type="text"
+            name="firstname"
+            ngModel
+            required
+            #firstname="ngModel"
+            minlength="3"
+            maxlength="15"
+          />
+          <ng-container *ngIf="firstname.touched">
+            <div
+              class="form-text text-danger"
+              *ngIf="firstname.errors?.['required']"
+            >
+              Le prénom est requis
+            </div>
+            <div class="form-text text-danger" *ngIf="firstname.errors?.['minlength']">
+              Le prénom doit comporter au moins 3 caractères
+            </div>
+          </ng-container>
+        </div>
+        <div class="form-group">
+          <label for="lastnameInput">Lasttname</label>
+          <input
+            class="form-control"
+            id="lastnameInput"
+            type="text"
+            name="lastname"
+            ngModel
+            required
+            #lastname="ngModel"
+            minlength="3"
+            maxlength="15"
+          />
+          <ng-container *ngIf="lastname.touched">
+            <div
+              class="form-text text-danger"
+              *ngIf="lastname.errors?.['required']"
+            >
+              Le nom est requis
+            </div>
+            <div class="form-text text-danger" *ngIf="lastname.errors?.['minlength']">
+              Le nom doit comporter au moins 3 caractères
+            </div>
+          </ng-container>
+        </div>
+        <div class="form-group">
+          <label for="emailInput">Email</label>
+          <input
+            class="form-control"
+            type="email"
+            id="emailInput"
+            name="email"
+            ngModel
+            required
+            email
+            #email="ngModel"
+          />
+          <ng-container *ngIf="email.touched">
+            <div
+              class="form-text text-danger"
+              *ngIf="email.errors?.['required']"
+            >
+              L'email est requis
+            </div>
+            <div class="form-text text-danger" *ngIf="email.errors?.['email']">
+              L'email est invalide
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <button [disabled]="!f.valid" class="btn btn-primary" type="submit">
+        Envoyer
+      </button>
+    </form>
+  </div>
+</div>
