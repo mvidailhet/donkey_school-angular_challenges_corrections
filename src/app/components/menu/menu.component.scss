@@ -1,0 +1,30 @@
+$menu-color: #0000ff;
+
+:host {
+  top: 0;
+  position: fixed;
+  background-color: $menu-color;
+  width: 100%;
+  display: flex;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.nav-item {
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+  color: white;
+  padding-left: 8px;
+  padding-right: 8px;
+  cursor: pointer;
+
+  &.active {
+    font-weight: bold;
+    background-color: darken($menu-color, 20%);
+  }
+
+  &:hover {
+    background-color: lighten($menu-color, 10%);
+  }
+}
