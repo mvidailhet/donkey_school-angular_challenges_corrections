@@ -1,0 +1,6 @@
+<h2>Mes Donkeys</h2>
+<ul class="row">
+  <li class="col donkey" *ngFor="let donkey of donkeys">
+    <app-donkey [small]="true" [donkey]="donkey"></app-donkey>
+  </li>
+</ul>

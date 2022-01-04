@@ -1,0 +1,39 @@
+.donkey {
+  width: 200px;
+  position: relative;
+  margin-bottom: 16px;
+
+
+  &.small {
+    width: 100px;
+    font-size: 0.6em;
+
+    .donkey-title {
+      font-size: 1.2em;
+    }
+  }
+
+  .donkey-body {
+    opacity: 0;
+    color: white;
+    padding: 8px;
+    transition: opacity 500ms;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &:hover {
+    .donkey-body {
+      opacity: 1;
+      background-color: transparentize($color: #2a2a2a, $amount: 0.3);
+    }
+  }
+}
+
+.donkey-img {
+  width: 100%;
+}

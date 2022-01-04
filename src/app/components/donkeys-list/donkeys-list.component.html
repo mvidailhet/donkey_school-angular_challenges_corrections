@@ -1,0 +1,6 @@
+<h2>Donkeys</h2>
+<ul>
+  <li *ngFor="let donkey of donkeys; let i = index">
+    <app-donkey [canAdopt]="true" [donkey]="donkey" (adoptClick)="adopt(i)"></app-donkey>
+  </li>
+</ul>
