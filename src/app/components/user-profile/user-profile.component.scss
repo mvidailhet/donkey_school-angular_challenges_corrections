@@ -1,0 +1,27 @@
+.card {
+  display: inline-block;
+  border: 1px solid lightgray;
+
+  .card-photo {
+
+  }
+
+  .card-content {
+    padding: 16px;
+
+    .text-big {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .quote {
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+  }
+
+  .card-footer {
+    background-color: #dfdfdf;
+    padding: 8px;
+  }
+}
