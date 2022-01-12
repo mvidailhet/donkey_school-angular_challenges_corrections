@@ -8,12 +8,16 @@ export interface Donkey {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DonkeyService {
   private _donkeys: Donkey[] = [];
 
-  constructor() { }
+  constructor() {
+    const donkeysString = localStorage.getItem('donkeys');
+    if (!donkeysString) return;
+    this._donkeys = JSON.parse(donkeysString);
+  }
 
   get donkeys() {
     return this._donkeys;
@@ -21,5 +25,6 @@ export class DonkeyService {
 
   createDonkey(donkey: Donkey) {
     this._donkeys.push(donkey);
+    localStorage.setItem('donkeys', JSON.stringify(this._donkeys));
   }
 }
