@@ -4,7 +4,7 @@
 
     <form [formGroup]="donkeyForm" (ngSubmit)="submitForm()">
       <div formGroupName="donkeyData">
-        <div class="mb-3">
+        <div class="form-group">
           <label for="exampleFormControlInput1" class="form-label">Nom</label>
           <input
             type="text"
@@ -16,6 +16,25 @@
           />
           <div class="text-danger text-small" *ngIf="name.touched && name.errors?.['required']">
             Un âne doit avoir un nom
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="emailInput" class="form-label">Email</label>
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            id="emailInput"
+            placeholder="donkey@gmail.com"
+            formControlName="email"
+          />
+          <div class="text-danger text-small" *ngIf="email.touched">
+            <div *ngIf="email.errors?.['required']">
+              Un âne doit avoir un email
+            </div>
+            <div *ngIf="email.errors?.['email']">
+              Un âne doit avoir un email valide
+            </div>
           </div>
         </div>
       </div>

@@ -15,15 +15,24 @@ export class CreateDonkeyComponent {
     return this.formBuilder.group({
       donkeyData: this.formBuilder.group({
         name: [null, [Validators.required]],
+        email: [null, [Validators.required, Validators.email]],
       }),
     });
   }
 
   submitForm() {
     console.log(this.donkeyForm);
+    if(!this.donkeyForm.valid) {
+      this.donkeyForm.markAllAsTouched();
+      return;
+    }
   }
 
   get name(): FormControl {
     return this.donkeyForm.get('donkeyData.name') as FormControl;
+  }
+
+  get email(): FormControl {
+    return this.donkeyForm.get('donkeyData.email') as FormControl;
   }
 }
