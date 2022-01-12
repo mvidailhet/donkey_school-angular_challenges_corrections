@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { donkeyOrigins } from 'src/app/data';
 
 @Component({
   selector: 'app-create-donkey',
@@ -8,6 +9,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class CreateDonkeyComponent {
   donkeyForm: FormGroup = this.createForm();
+  origins = donkeyOrigins;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -16,6 +18,7 @@ export class CreateDonkeyComponent {
       donkeyData: this.formBuilder.group({
         name: [null, [Validators.required]],
         email: [null, [Validators.required, Validators.email]],
+        origin: [null, [Validators.required]],
       }),
     });
   }
@@ -34,5 +37,9 @@ export class CreateDonkeyComponent {
 
   get email(): FormControl {
     return this.donkeyForm.get('donkeyData.email') as FormControl;
+  }
+
+  get origin(): FormControl {
+    return this.donkeyForm.get('donkeyData.origin') as FormControl;
   }
 }

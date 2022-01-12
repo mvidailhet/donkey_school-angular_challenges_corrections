@@ -3,6 +3,9 @@
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
 
-input.ng-invalid.ng-touched {
-  border-color: $danger;
+input, select {
+
+  &.ng-invalid.ng-touched {
+    border-color: $danger;
+  }
 }
