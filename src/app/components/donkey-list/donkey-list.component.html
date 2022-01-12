@@ -1,0 +1,10 @@
+<div class="card" *ngFor="let donkey of donkeys" style="width: 18rem;">
+  <img [src]="donkey.image" class="card-img-top" />
+  <div class="card-body">
+    <h5 class="card-title">{{ donkey.name }}</h5>
+    <p class="card-text">
+      Origine : {{ donkey.origin }}
+    </p>
+  </div>
+</div>
+

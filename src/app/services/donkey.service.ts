@@ -15,6 +15,10 @@ export class DonkeyService {
 
   constructor() { }
 
+  get donkeys() {
+    return this._donkeys;
+  }
+
   createDonkey(donkey: Donkey) {
     this._donkeys.push(donkey);
   }
