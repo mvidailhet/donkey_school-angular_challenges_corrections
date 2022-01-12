@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="p-5">
+    <h1>Créer un donkey</h1>
+
+    <form [formGroup]="donkeyForm">
+      <div formGroupName="donkeyData">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Nom</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="super donkey"
+          />
+        </div>
+      </div>
+      <button
+        (click)="submitForm()"
+        [disabled]="donkeyForm.invalid"
+        class="btn btn-primary mt-3"
+        type="submit"
+      >
+        Créer
+      </button>
+    </form>
+  </div>
+</div>
