@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { donkeyImages, donkeyOrigins } from 'src/app/data';
+import { DonkeyService } from 'src/app/services/donkey.service';
 
 @Component({
   selector: 'app-create-donkey',
@@ -12,7 +18,10 @@ export class CreateDonkeyComponent {
   origins = donkeyOrigins;
   images = donkeyImages;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private donkeyService: DonkeyService
+  ) {}
 
   createForm(): FormGroup {
     return this.formBuilder.group({
@@ -26,11 +35,11 @@ export class CreateDonkeyComponent {
   }
 
   submitForm() {
-    console.log(this.donkeyForm);
-    if(!this.donkeyForm.valid) {
+    if (!this.donkeyForm.valid) {
       this.donkeyForm.markAllAsTouched();
       return;
     }
+    this.donkeyService.createDonkey(this.donkeyForm.value.donkeyData);
   }
 
   get name(): FormControl {
