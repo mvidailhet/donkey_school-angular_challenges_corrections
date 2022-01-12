@@ -2,21 +2,24 @@
   <div class="p-5">
     <h1>Créer un donkey</h1>
 
-    <form [formGroup]="donkeyForm">
+    <form [formGroup]="donkeyForm" (ngSubmit)="submitForm()">
       <div formGroupName="donkeyData">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Nom</label>
           <input
             type="text"
+            name="name"
             class="form-control"
             id="exampleFormControlInput1"
             placeholder="super donkey"
+            formControlName="name"
           />
+          <div class="text-danger text-small" *ngIf="name.touched && name.errors?.['required']">
+            Un âne doit avoir un nom
+          </div>
         </div>
       </div>
       <button
-        (click)="submitForm()"
-        [disabled]="donkeyForm.invalid"
         class="btn btn-primary mt-3"
         type="submit"
       >
