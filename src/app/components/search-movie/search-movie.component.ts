@@ -15,8 +15,10 @@ export class SearchMovieComponent implements OnInit {
 
   initSearchFormGroup() {
     this.searchForm = this.formBuilder.group({
-      id: [],
-      title: [],
+      searchData: this.formBuilder.group({
+        id: [],
+        title: [],
+      }),
     });
   }
 

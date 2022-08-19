@@ -1,23 +1,25 @@
 <div class="container">
   <div class="p-5">
     <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="idInput">Identifiant</label>
-        <input
-          class="form-control"
-          id="idInput"
-          type="text"
-          formControlName="id"
-        />
-      </div>
-      <div class="form-group">
-        <label for="titleInput">Titre</label>
-        <input
-          class="form-control"
-          id="titleInput"
-          type="text"
-          formControlName="title"
-        />
+      <div formGroupName="searchData">
+        <div class="form-group">
+          <label for="idInput">Identifiant</label>
+          <input
+            class="form-control"
+            id="idInput"
+            type="text"
+            formControlName="id"
+          />
+        </div>
+        <div class="form-group">
+          <label for="titleInput">Titre</label>
+          <input
+            class="form-control"
+            id="titleInput"
+            type="text"
+            formControlName="title"
+          />
+        </div>
       </div>
       <button
         [disabled]="!searchForm.valid"
