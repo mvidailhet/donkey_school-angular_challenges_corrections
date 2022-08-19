@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="p-5">
+    <form [formGroup]="searchForm" #form="ngForm" (ngSubmit)="onSubmit()">
+      <div formGroupName="searchData">
+        <div class="form-group">
+          <label for="idInput">Identifiant</label>
+          <input
+            class="form-control"
+            id="idInput"
+            type="text"
+            formControlName="id"
+          />
+        </div>
+        <div class="form-group">
+          <label for="titleInput">Titre</label>
+          <input
+            class="form-control"
+            id="titleInput"
+            type="text"
+            formControlName="title"
+          />
+        </div>
+        <ng-container *ngIf="form.submitted">
+          <div class="form-text text-danger" *ngIf="searchData.errors?.['isRequired']">
+            Il faut spécifier l'identifiant ou le titre
+          </div>
+        </ng-container>
+      </div>
+      <div class="form-group" [hidden]="!showTypeSelect">
+        <label for="typeInput">Type</label>
+        <select
+          class="form-control"
+          id="typeInput"
+          formControlName="type"
+        >
+        <option [value]="TYPE.key" *ngFor="let TYPE of TYPES | keyvalue">{{ TYPE.value }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="yearInput">Année</label>
+        <input
+          class="form-control"
+          id="yearInput"
+          type="number"
+          formControlName="year"
+        />
+        <div class="alert alert-warning show mt-3">
+          L'année doit être comprise entre {{ acceptedYears.minYear }} et {{ acceptedYears.maxYear }}
+      </div>
+        <ng-container *ngIf="form.submitted">
+          <div class="form-text text-danger" *ngIf="year.errors?.['required']">
+            Il faut spécifier une année
+          </div>
+          <div class="form-text text-danger" *ngIf="year.errors?.['min']">
+            L'année doit être supérieure ou égale à {{ acceptedYears.minYear }}
+          </div>
+          <div class="form-text text-danger" *ngIf="year.errors?.['max']">
+            L'année doit être inférieure ou égale à {{ acceptedYears.maxYear }}
+          </div>
+        </ng-container>
+      </div>
+      <div class="form-group">
+        <label for="infoInput">Fiche</label>
+        <select
+          class="form-control"
+          id="infoInput"
+          formControlName="info"
+        >
+        <option [value]="P_INFO.key" *ngFor="let P_INFO of INFO | keyvalue">{{ P_INFO.value }}</option>
+        </select>
+      </div>
+      <button
+        class="btn btn-primary mt-3"
+        type="submit"
+      >
+        submit
+      </button>
+    </form>
+  </div>
+</div>
