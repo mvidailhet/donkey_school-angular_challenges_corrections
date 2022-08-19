@@ -29,6 +29,7 @@ export class SearchMovieComponent implements OnInit {
   TYPES = TYPES;
   INFO = INFO;
   searchForm!: FormGroup;
+  showTypeSelect = false;
 
   acceptedYears = {
     minYear: 1900,
@@ -64,6 +65,13 @@ export class SearchMovieComponent implements OnInit {
       info: [],
     });
     this.searchForm.controls['info'].patchValue('SHORT');
+    this.lookForTitleValueChanges();
+  }
+
+  lookForTitleValueChanges() {
+    this.searchForm.get('searchData.id')?.valueChanges.subscribe((newValue: string) => {
+      this.showTypeSelect = !!newValue;
+    });
   }
 
   ngOnInit(): void {}
