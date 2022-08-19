@@ -27,7 +27,7 @@ export class SearchMovieComponent implements OnInit {
         title: [],
       }),
       year: [undefined, Validators.required],
-      type: [],
+      type: ['TV_SHOW'],
     });
   }
 
