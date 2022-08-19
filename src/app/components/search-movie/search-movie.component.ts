@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 
 enum TYPES {
   FILM = 'film',
@@ -25,7 +32,7 @@ export class SearchMovieComponent implements OnInit {
   acceptedYears = {
     minYear: 1900,
     maxYear: new Date().getFullYear(),
-  }
+  };
 
   constructor(private formBuilder: FormBuilder) {
     this.initSearchFormGroup();
@@ -37,7 +44,10 @@ export class SearchMovieComponent implements OnInit {
         id: [],
         title: [],
       }),
-      year: [undefined, [Validators.required, this.rangeDateValidator.bind(this)]],
+      year: [
+        undefined,
+        [Validators.required, this.rangeDateValidator(this.acceptedYears.minYear, this.acceptedYears.maxYear)],
+      ],
       type: ['TV_SHOW'],
       info: [],
     });
@@ -50,21 +60,22 @@ export class SearchMovieComponent implements OnInit {
     console.log(this.searchForm);
   }
 
-  rangeDateValidator(
-    control: FormControl
-  ): { [s: string]: boolean } | null {
+  rangeDateValidator(minYear: number, maxYear: number): ValidatorFn {
+    return (control: AbstractControl): { [s: string]: boolean } | null => {
+      let errors = {};
+      if (control.value < minYear)
+        errors = { ...errors, min: true };
+      if (control.value > maxYear)
+        errors = { ...errors, max: true };
 
-    let errors = {};
-    if (control.value < this.acceptedYears.minYear) errors = { ...errors, min: true };
-    if (control.value > this.acceptedYears.maxYear) errors = { ...errors, max: true };
+      const isEmpty = (obj: { [s: string]: any }) => {
+        return Object.keys(obj).length === 0;
+      };
 
-    const isEmpty = (obj: { [s: string]: any }) => {
-      return Object.keys(obj).length === 0;
-    }
+      if (isEmpty(errors)) return null;
 
-    if (isEmpty(errors)) return null;
-
-    return errors;
+      return errors;
+    };
   }
 
   get year(): FormControl {
