@@ -5,12 +5,12 @@ enum TYPES {
   FILM = 'film',
   TV_SHOW = 'série',
   EPISODE = 'épisode',
-};
+}
 
 enum INFO {
   COMPLETE = 'complète',
   SHORT = 'short',
-};
+}
 
 @Component({
   selector: 'app-search-movie',
@@ -36,6 +36,7 @@ export class SearchMovieComponent implements OnInit {
       type: ['TV_SHOW'],
       info: [],
     });
+    this.searchForm.controls['info'].patchValue('SHORT');
   }
 
   ngOnInit(): void {}
