@@ -21,6 +21,15 @@
           />
         </div>
       </div>
+      <div class="form-group">
+        <label for="yearInput">Année</label>
+        <input
+          class="form-control"
+          id="yearInput"
+          type="number"
+          formControlName="year"
+        />
+      </div>
       <button
         [disabled]="!searchForm.valid"
         class="btn btn-primary mt-3"
