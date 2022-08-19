@@ -39,7 +39,7 @@
           type="number"
           formControlName="year"
         />
-        <div class="form-text text-danger" *ngIf="year.errors?.['required']">
+        <div class="form-text text-danger" *ngIf="year.touched && year.errors?.['required']">
           Please provide a year
         </div>
       </div>
