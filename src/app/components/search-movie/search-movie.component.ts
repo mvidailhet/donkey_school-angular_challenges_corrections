@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 enum TYPES {
   FILM = 'film',
@@ -43,5 +43,9 @@ export class SearchMovieComponent implements OnInit {
 
   onSubmit() {
     console.log(this.searchForm);
+  }
+
+  get year(): FormControl {
+    return this.searchForm.get('year') as FormControl;
   }
 }

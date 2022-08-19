@@ -39,6 +39,9 @@
           type="number"
           formControlName="year"
         />
+        <div class="form-text text-danger" *ngIf="year.errors?.['required']">
+          Please provide a year
+        </div>
       </div>
       <div class="form-group">
         <label for="infoInput">Fiche</label>
