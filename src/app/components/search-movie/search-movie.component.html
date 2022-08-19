@@ -40,17 +40,17 @@
           formControlName="year"
         />
         <div class="alert alert-warning show mt-3">
-          L'année doit être comprise entre 1900 et 2022
+          L'année doit être comprise entre {{ acceptedYears.minYear }} et {{ acceptedYears.maxYear }}
       </div>
         <ng-container *ngIf="year.touched">
           <div class="form-text text-danger" *ngIf="year.errors?.['required']">
             Il faut spécifier une année
           </div>
           <div class="form-text text-danger" *ngIf="year.errors?.['min']">
-            L'année doit être supérieure ou égale à 1900
+            L'année doit être supérieure ou égale à {{ acceptedYears.minYear }}
           </div>
           <div class="form-text text-danger" *ngIf="year.errors?.['max']">
-            L'année doit être inférieure ou égale à 2022
+            L'année doit être inférieure ou égale à {{ acceptedYears.maxYear }}
           </div>
         </ng-container>
       </div>

@@ -22,6 +22,11 @@ export class SearchMovieComponent implements OnInit {
   INFO = INFO;
   searchForm!: FormGroup;
 
+  acceptedYears = {
+    minYear: 1900,
+    maxYear: new Date().getFullYear(),
+  }
+
   constructor(private formBuilder: FormBuilder) {
     this.initSearchFormGroup();
   }
@@ -32,7 +37,7 @@ export class SearchMovieComponent implements OnInit {
         id: [],
         title: [],
       }),
-      year: [undefined, [Validators.required, this.rangeDateValidator]],
+      year: [undefined, [Validators.required, this.rangeDateValidator.bind(this)]],
       type: ['TV_SHOW'],
       info: [],
     });
@@ -50,8 +55,8 @@ export class SearchMovieComponent implements OnInit {
   ): { [s: string]: boolean } | null {
 
     let errors = {};
-    if (control.value < 1900) errors = { ...errors, min: true };
-    if (control.value > new Date().getFullYear()) errors = { ...errors, max: true };
+    if (control.value < this.acceptedYears.minYear) errors = { ...errors, min: true };
+    if (control.value > this.acceptedYears.maxYear) errors = { ...errors, max: true };
 
     const isEmpty = (obj: { [s: string]: any }) => {
       return Object.keys(obj).length === 0;
