@@ -1,12 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+enum TYPES {
+  FILM = 'film',
+  TV_SHOW = 'série',
+  EPISODE = 'épisode',
+};
+
 @Component({
   selector: 'app-search-movie',
   templateUrl: './search-movie.component.html',
   styleUrls: ['./search-movie.component.scss'],
 })
 export class SearchMovieComponent implements OnInit {
+  TYPES = TYPES;
   searchForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {

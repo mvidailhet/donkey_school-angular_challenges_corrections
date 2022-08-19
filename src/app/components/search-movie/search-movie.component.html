@@ -28,9 +28,7 @@
           id="typeInput"
           formControlName="type"
         >
-        <option value="FILM">film</option>
-        <option value="TV_SHOW">série</option>
-        <option value="EPISODE">épisode</option>
+        <option [value]="TYPE.key" *ngFor="let TYPE of TYPES | keyvalue">{{ TYPE.value }}</option>
         </select>
       </div>
       <div class="form-group">
