@@ -32,7 +32,7 @@ export class SearchMovieComponent implements OnInit {
         id: [],
         title: [],
       }),
-      year: [undefined, Validators.required],
+      year: [undefined, [Validators.required, this.rangeDateValidator]],
       type: ['TV_SHOW'],
       info: [],
     });
@@ -43,6 +43,23 @@ export class SearchMovieComponent implements OnInit {
 
   onSubmit() {
     console.log(this.searchForm);
+  }
+
+  rangeDateValidator(
+    control: FormControl
+  ): { [s: string]: boolean } | null {
+
+    let errors = {};
+    if (control.value < 1900) errors = { ...errors, min: true };
+    if (control.value > new Date().getFullYear()) errors = { ...errors, max: true };
+
+    const isEmpty = (obj: { [s: string]: any }) => {
+      return Object.keys(obj).length === 0;
+    }
+
+    if (isEmpty(errors)) return null;
+
+    return errors;
   }
 
   get year(): FormControl {
