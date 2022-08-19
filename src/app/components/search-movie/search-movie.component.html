@@ -1,6 +1,6 @@
 <div class="container">
   <div class="p-5">
-    <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="searchForm" #form="ngForm" (ngSubmit)="onSubmit()">
       <div formGroupName="searchData">
         <div class="form-group">
           <label for="idInput">Identifiant</label>
@@ -42,7 +42,7 @@
         <div class="alert alert-warning show mt-3">
           L'année doit être comprise entre {{ acceptedYears.minYear }} et {{ acceptedYears.maxYear }}
       </div>
-        <ng-container *ngIf="year.touched">
+        <ng-container *ngIf="form.submitted">
           <div class="form-text text-danger" *ngIf="year.errors?.['required']">
             Il faut spécifier une année
           </div>
@@ -65,7 +65,6 @@
         </select>
       </div>
       <button
-        [disabled]="!searchForm.valid"
         class="btn btn-primary mt-3"
         type="submit"
       >
