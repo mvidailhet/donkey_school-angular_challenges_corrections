@@ -7,6 +7,11 @@ enum TYPES {
   EPISODE = 'épisode',
 };
 
+enum INFO {
+  COMPLETE = 'complète',
+  SHORT = 'short',
+};
+
 @Component({
   selector: 'app-search-movie',
   templateUrl: './search-movie.component.html',
@@ -14,6 +19,7 @@ enum TYPES {
 })
 export class SearchMovieComponent implements OnInit {
   TYPES = TYPES;
+  INFO = INFO;
   searchForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
@@ -28,6 +34,7 @@ export class SearchMovieComponent implements OnInit {
       }),
       year: [undefined, Validators.required],
       type: ['TV_SHOW'],
+      info: [],
     });
   }
 
