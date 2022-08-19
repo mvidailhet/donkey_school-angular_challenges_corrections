@@ -4,6 +4,7 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
+  ValidationErrors,
   ValidatorFn,
   Validators,
 } from '@angular/forms';
@@ -40,13 +41,24 @@ export class SearchMovieComponent implements OnInit {
 
   initSearchFormGroup() {
     this.searchForm = this.formBuilder.group({
-      searchData: this.formBuilder.group({
-        id: [],
-        title: [],
-      }),
+      searchData: this.formBuilder.group(
+        {
+          id: [],
+          title: [],
+        },
+        {
+          validator: this.isRequiredValidator('id', 'title'),
+        }
+      ),
       year: [
         undefined,
-        [Validators.required, this.rangeDateValidator(this.acceptedYears.minYear, this.acceptedYears.maxYear)],
+        [
+          Validators.required,
+          this.rangeDateValidator(
+            this.acceptedYears.minYear,
+            this.acceptedYears.maxYear
+          ),
+        ],
       ],
       type: ['TV_SHOW'],
       info: [],
@@ -61,12 +73,10 @@ export class SearchMovieComponent implements OnInit {
   }
 
   rangeDateValidator(minYear: number, maxYear: number): ValidatorFn {
-    return (control: AbstractControl): { [s: string]: boolean } | null => {
+    return (control: AbstractControl): ValidationErrors | null => {
       let errors = {};
-      if (control.value < minYear)
-        errors = { ...errors, min: true };
-      if (control.value > maxYear)
-        errors = { ...errors, max: true };
+      if (control.value < minYear) errors = { ...errors, min: true };
+      if (control.value > maxYear) errors = { ...errors, max: true };
 
       const isEmpty = (obj: { [s: string]: any }) => {
         return Object.keys(obj).length === 0;
@@ -78,7 +88,22 @@ export class SearchMovieComponent implements OnInit {
     };
   }
 
+  isRequiredValidator(control1Name: string, control2Name: string): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const idIsEmpty = !control.get(control1Name)?.value;
+      const titleIsEmpty = !control.get(control2Name)?.value;
+      if (idIsEmpty && titleIsEmpty) {
+        return { isRequired: true };
+      }
+      return null;
+    };
+  }
+
   get year(): FormControl {
     return this.searchForm.get('year') as FormControl;
+  }
+
+  get searchData(): FormGroup {
+    return this.searchForm.get('searchData') as FormGroup;
   }
 }

@@ -20,6 +20,11 @@
             formControlName="title"
           />
         </div>
+        <ng-container *ngIf="form.submitted">
+          <div class="form-text text-danger" *ngIf="searchData.errors?.['isRequired']">
+            Il faut spécifier l'identifiant ou le titre
+          </div>
+        </ng-container>
       </div>
       <div class="form-group">
         <label for="typeInput">Type</label>
