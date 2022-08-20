@@ -1,0 +1,33 @@
+<div class="p-5" *ngIf="developer">
+  <p>
+    <strong>Prénom : </strong>
+    <span>{{ developer.firstName }}</span>
+  </p>
+
+  <p>
+    <strong>Nom : </strong>
+    <span>{{ developer.lastName }}</span>
+  </p>
+
+  <p>
+    <strong>Age : </strong>
+    <span>{{ developer.age }}</span>
+  </p>
+
+  <p>
+    <strong>Sexe : </strong>
+    <span>{{ developer.sexe }}</span>
+  </p>
+
+  <p>
+    <strong>Bio : </strong>
+    <span>{{ developer.bio }}</span>
+  </p>
+
+  <div class="row">
+    <div class="col" *ngFor="let skill of developer.skills">
+      <app-skill [skill]="skill"></app-skill>
+    </div>
+  </div>
+
+</div>
