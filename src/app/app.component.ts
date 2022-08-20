@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'temp';
+  onomatopeias: string[] = [];
+
+  onReceiveNewOnomatopeia(newOnomatopeia: string) {
+    this.onomatopeias.push(newOnomatopeia);
+  }
 }

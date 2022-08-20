@@ -1,0 +1,14 @@
+<div class="mb-5">
+  <div class="form-group">
+    <label for="firstnameInput">Onomatopée</label>
+    <input
+      class="form-control"
+      id="firstnameInput"
+      type="text"
+      [(ngModel)]="newOnomatopeia"
+    />
+  </div>
+  <button class="btn btn-primary" (click)="onSubmit()" type="submit">
+    créer
+  </button>
+</div>
