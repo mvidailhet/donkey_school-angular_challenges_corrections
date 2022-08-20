@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-create-onomatopeia',
@@ -6,10 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-onomatopeia.component.scss']
 })
 export class CreateOnomatopeiaComponent {
+  @Output() onCreateOnomatopeia = new EventEmitter<string>();
+
   newOnomatopeia?: string;
 
   onSubmit() {
     if (!this.newOnomatopeia) return;
-    console.log(this.newOnomatopeia);
+    this.onCreateOnomatopeia.emit(this.newOnomatopeia);
+    this.newOnomatopeia = '';
   }
 }

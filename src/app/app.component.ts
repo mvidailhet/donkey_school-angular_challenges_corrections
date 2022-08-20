@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   onomatopeias: string[] = [];
+
+  onReceiveNewOnomatopeia(newOnomatopeia: string) {
+    this.onomatopeias.push(newOnomatopeia);
+  }
 }

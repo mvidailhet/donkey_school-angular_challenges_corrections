@@ -1,1 +1,14 @@
-<app-create-onomatopeia></app-create-onomatopeia>
+<div class="container">
+  <div class="p-5">
+    <app-create-onomatopeia (onCreateOnomatopeia)="onReceiveNewOnomatopeia($event)"></app-create-onomatopeia>
+
+    <h1>Onomatopées</h1>
+
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let onomatopeia of onomatopeias">{{ onomatopeia }}</li>
+    </ul>
+  </div>
+</div>
+
+
+
