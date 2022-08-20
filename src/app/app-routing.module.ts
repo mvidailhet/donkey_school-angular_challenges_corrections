@@ -10,6 +10,10 @@ const routes: Routes = [
   {
     path: 'inscription',
     loadChildren: () => import('./pages/inscription/inscription.module').then((m) => m.InscriptionModule),
+  },
+  {
+    path: 'playlists',
+    loadChildren: () => import('./pages/playlists/playlists.module').then((m) => m.PlaylistsModule),
   }
 ];
 
