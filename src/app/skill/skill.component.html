@@ -1,1 +1,9 @@
-<p>skill works!</p>
+<div class="card" *ngIf="skill" style="width: 18rem;">
+  <img [src]="skill.logo" class="card-img-top" [alt]="skill.name + ' logo'">
+  <div class="card-body">
+    <h5 class="card-title">{{ skill.name }}</h5>
+    <p class="card-text">
+      <a [href]="skill.site" target="_blank">{{ skill.site }}</a>
+    </p>
+  </div>
+</div>
