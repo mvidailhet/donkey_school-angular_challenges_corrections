@@ -10,7 +10,7 @@ export enum ROLE {
   providedIn: 'root'
 })
 export class UserService {
-  private _role = ROLE.ANONYMOUS;
+  private _role = ROLE.USER;
 
   getRole() {
     return this._role;
