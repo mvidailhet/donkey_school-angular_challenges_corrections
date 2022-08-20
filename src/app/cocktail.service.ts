@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Cocktail } from './cocktail.model';
 
 @Injectable({
@@ -18,7 +19,7 @@ export class CocktailService {
     }
   ];
 
-  getCocktails() {
-    return this.cocktails;
+  getCocktails(): Observable<Cocktail[]> {
+    return of(this.cocktails);
   }
 }

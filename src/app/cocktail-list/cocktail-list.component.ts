@@ -8,8 +8,12 @@ import { CocktailService } from '../cocktail.service';
   styleUrls: ['./cocktail-list.component.scss']
 })
 export class CocktailListComponent {
-  cocktails: Cocktail[] = this.cocktailService.getCocktails();
+  cocktails!: Cocktail[];
 
-  constructor(private cocktailService: CocktailService) { }
+  constructor(private cocktailService: CocktailService) {
+    this.cocktailService.getCocktails().subscribe((cocktails: Cocktail[]) => {
+      this.cocktails = cocktails;
+    });
+  }
 
 }
