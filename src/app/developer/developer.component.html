@@ -24,5 +24,10 @@
     <span>{{ developer.bio }}</span>
   </p>
 
-  <app-skill></app-skill>
+  <div class="row">
+    <div class="col" *ngFor="let skill of developer.skills">
+      <app-skill [skill]="skill"></app-skill>
+    </div>
+  </div>
+
 </div>
