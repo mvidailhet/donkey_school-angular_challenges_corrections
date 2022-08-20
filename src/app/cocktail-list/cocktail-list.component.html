@@ -1,10 +1,11 @@
 <div class="container p-5">
   <div class="row">
-    <div class="col">
+    <div class="col" *ngFor="let cocktail of cocktails">
       <div class="card" style="width: 18rem">
-        <img src="..." class="card-img-top" alt="..." />
+        <img [src]="cocktail.img" class="card-img-top" [alt]="cocktail.name + ' image'" />
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title">{{ cocktail.name }}</h5>
+          <p class="card-text">{{ cocktail.price }}</p>
         </div>
       </div>
     </div>
