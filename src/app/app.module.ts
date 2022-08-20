@@ -9,7 +9,7 @@ import { ConnexionComponent } from './pages/connexion/connexion.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ConnexionComponent
+    ConnexionComponent,
   ],
   imports: [
     BrowserModule,
