@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-create-onomatopeia',
   templateUrl: './create-onomatopeia.component.html',
   styleUrls: ['./create-onomatopeia.component.scss']
 })
-export class CreateOnomatopeiaComponent implements OnInit {
+export class CreateOnomatopeiaComponent {
+  newOnomatopeia?: string;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  onSubmit() {
+    if (!this.newOnomatopeia) return;
+    console.log(this.newOnomatopeia);
   }
-
 }
