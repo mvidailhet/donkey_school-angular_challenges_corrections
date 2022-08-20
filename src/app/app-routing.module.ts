@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { IsConnectedGuard } from './guards/is-connected.guard';
 import { AdminComponent } from './pages/admin/admin.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -11,7 +12,8 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [IsConnectedGuard]
   },
   {
     path: 'admin',
