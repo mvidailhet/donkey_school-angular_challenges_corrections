@@ -13,6 +13,9 @@
     <div class="form-group">
       <label for="yearInput">Année</label>
       <input class="form-control" id="yearInput" type="number" formControlName="year" />
+      <div class="form-text text-danger" *ngIf="year.touched && year.errors?.['required']">
+        Il faut préciser une année !
+      </div>
     </div>
     <button [disabled]="!searchForm.valid" class="btn btn-primary mt-3" type="submit">submit</button>
   </form>

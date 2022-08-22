@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-search-movie',
@@ -30,4 +30,7 @@ export class SearchMovieComponent implements OnInit {
     console.log(this.searchForm);
   }
 
+  get year(): FormControl {
+    return this.searchForm.get('year') as FormControl;
+  }
 }
