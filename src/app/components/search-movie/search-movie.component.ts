@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-search-movie',
@@ -16,9 +16,10 @@ export class SearchMovieComponent implements OnInit {
   initSearchForm() {
     this.searchForm = this.formBuilder.group({
       searchData: this.formBuilder.group({
-        id: [null],
-        name: [null],
-      })
+        id: [],
+        name: [],
+      }),
+      year: [null, Validators.required],
     });
   }
 
