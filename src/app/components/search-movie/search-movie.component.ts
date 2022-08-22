@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-search-movie',
@@ -6,8 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-movie.component.scss']
 })
 export class SearchMovieComponent implements OnInit {
+  searchForm!: FormGroup;
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) {
+    this.initSearchForm();
+  }
+
+  initSearchForm() {
+    this.searchForm = this.formBuilder.group({
+      id: [null],
+      name: [null],
+    });
+  }
 
   ngOnInit(): void {
   }
