@@ -23,4 +23,8 @@ export class SearchMovieComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit() {
+    console.log(this.searchForm);
+  }
+
 }
