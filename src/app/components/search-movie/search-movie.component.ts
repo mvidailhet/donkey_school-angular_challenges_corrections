@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-search-movie',
@@ -19,8 +19,17 @@ export class SearchMovieComponent implements OnInit {
         id: [],
         name: [],
       }),
-      year: [null, Validators.required],
+      year: [null, [Validators.required, this.rangeDateValidator]],
     });
+  }
+
+  rangeDateValidator(control: AbstractControl) {
+    console.log(control.value);
+    return null;
+/*     if (!control.value.startsWith('https') || !control.value.includes('.io')) {
+      return { min: true, max: true };
+    }
+    return null; */
   }
 
   ngOnInit(): void {
