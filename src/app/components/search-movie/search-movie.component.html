@@ -13,9 +13,18 @@
     <div class="form-group">
       <label for="yearInput">Année</label>
       <input class="form-control" id="yearInput" type="number" formControlName="year" />
-      <div class="form-text text-danger" *ngIf="year.touched && year.errors?.['required']">
-        Il faut préciser une année !
+      <div *ngIf="year.touched">
+        <div class="form-text text-danger" *ngIf="year.errors?.['required']">
+          Il faut spécifier une année
+        </div>
+        <div class="form-text text-danger" *ngIf="year.value && year.errors?.['min']">
+          L'année doit être supérieure ou égale à {{ minMaxYears.min }}
+        </div>
+        <div class="form-text text-danger" *ngIf="year.value && year.errors?.['max']">
+          L'année doit être inférieure ou égale à {{ minMaxYears.max }}
+        </div>
       </div>
+
     </div>
     <button [disabled]="!searchForm.valid" class="btn btn-primary mt-3" type="submit">submit</button>
   </form>
