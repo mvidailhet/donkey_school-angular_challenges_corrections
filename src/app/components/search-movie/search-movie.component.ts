@@ -24,12 +24,10 @@ export class SearchMovieComponent implements OnInit {
   }
 
   rangeDateValidator(control: AbstractControl) {
-    console.log(control.value);
+    if (control.value < 1900) return { min: true };
+    const currentYear = new Date().getFullYear();
+    if (control.value > currentYear) return { max: true };
     return null;
-/*     if (!control.value.startsWith('https') || !control.value.includes('.io')) {
-      return { min: true, max: true };
-    }
-    return null; */
   }
 
   ngOnInit(): void {
