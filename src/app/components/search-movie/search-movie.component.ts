@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-search-movie',
@@ -24,14 +24,16 @@ export class SearchMovieComponent implements OnInit {
         id: [],
         name: [],
       }),
-      year: [null, [Validators.required, this.rangeDateValidator.bind(this)]],
+      year: [null, [Validators.required, this.rangeDataValidatorCreator(this.minMaxYears.min, this.minMaxYears.max)]],
     });
   }
 
-  rangeDateValidator (control: AbstractControl) {
-    if (control.value < this.minMaxYears.min) return { min: true };
-    if (control.value > this.minMaxYears.max) return { max: true };
-    return null;
+  rangeDataValidatorCreator(min: number, max: number): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      if (control.value < min) return { min: true };
+      if (control.value > max) return { max: true };
+      return null;
+    }
   }
 
   ngOnInit(): void {
