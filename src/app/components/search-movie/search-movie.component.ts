@@ -9,6 +9,11 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 export class SearchMovieComponent implements OnInit {
   searchForm!: FormGroup;
 
+  minMaxYears = {
+    min: 1900,
+    max: new Date().getFullYear(),
+  }
+
   constructor(private formBuilder: FormBuilder) {
     this.initSearchForm();
   }
@@ -19,14 +24,13 @@ export class SearchMovieComponent implements OnInit {
         id: [],
         name: [],
       }),
-      year: [null, [Validators.required, this.rangeDateValidator]],
+      year: [null, [Validators.required, this.rangeDateValidator.bind(this)]],
     });
   }
 
-  rangeDateValidator(control: AbstractControl) {
-    if (control.value < 1900) return { min: true };
-    const currentYear = new Date().getFullYear();
-    if (control.value > currentYear) return { max: true };
+  rangeDateValidator (control: AbstractControl) {
+    if (control.value < this.minMaxYears.min) return { min: true };
+    if (control.value > this.minMaxYears.max) return { max: true };
     return null;
   }
 
